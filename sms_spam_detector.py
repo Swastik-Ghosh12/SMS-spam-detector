@@ -44,23 +44,22 @@ npunc
 
 from nltk.corpus import stopwords
 
-clean_s=[word for word in npunc.split()
+clean_sent=[word for word in npunc.split()
         if word.lower() not in stopwords.words('english')]
 
-clean_s
+clean_sent
 
 def process_text(raw_text):
   #check for punctuations
-  npunc=[char for char in raw_text if char not in string.punctuation]
+  remove_punc=[char for char in raw_text if char not in string.punctuation]
   
   #form a sentence again
-  npunc=''.join(npunc)
+  remove_punc=''.join(remove_punc)
   
   #removing stopwords
-  return [word for word in npunc.split()
+  return [word for word in remove_punc.split()
    if word.lower() not in stopwords.words('english')]
 
-df['sms'].head(2)
 
 df['sms'].apply(process_text)
 
